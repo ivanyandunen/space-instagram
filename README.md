@@ -15,7 +15,7 @@ pip install -r requirements.txt
 ```
 
 Run `python %scriptname.py%`. Downloaded images are saved to `images` subdirectory where scripts run.
-To upload images you will need to enter instagram login and password. They are saved to `secret.txt` file in script directory.
+To upload images you will need to enter instagram login and password. They are saved to `secret.txt` file in script directory(as `email:=password`. If you have several accounts, they are saved on the new line each).
 
 ## Project Goals
 
