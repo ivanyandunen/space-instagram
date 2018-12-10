@@ -2,21 +2,21 @@ import requests
 import os
 
 
-def save_image(url, filepath, filename):
-    request = requests.get(url)
-    with open(os.path.join(filepath, filename), 'wb') as file:  
-        file.write(request.content)
+def download_image(url, images_dir, filename):
+    image_link = requests.get(url)
+    with open(os.path.join(images_dir, filename), 'wb') as file:  
+        file.write(image_link.content)
 
 
 def fetch_spacex_last_launch():
     url = "https://api.spacexdata.com/v3/launches/latest"
     list_of_links = requests.get(url).json()['links']['flickr_images']
     for counter, link in enumerate(list_of_links, 1):
-        save_image(link, filepath, 'spacex{}.jpg'.format(counter))
+        download_image(link, images_dir, 'spacex{}.jpg'.format(counter))
 
 
 if __name__ == '__main__':
-    filepath = 'images'
-    if not os.path.exists(filepath):
-        os.mkdir(filepath)
+    images_dir = 'images'
+    if not os.path.exists(images_dir):
+        os.mkdir(images_dir)
     fetch_spacex_last_launch()
